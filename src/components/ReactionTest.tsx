@@ -38,11 +38,11 @@ const getRandomColor = () => {
   return colors[Math.floor(Math.random() * colors.length)];
 };
 
-const redirectDomains = [
-  'https://naver.com',
-  'https://google.com',
-  'https://youtube.com',
-];
+// const redirectDomains = [
+//   'https://naver.com',
+//   'https://google.com',
+//   'https://youtube.com',
+// ];
 
 type ReactionTestRef = {
   startTest: () => void;
@@ -120,11 +120,11 @@ const ReactionTest = forwardRef<ReactionTestRef, ReactionTestProps>(
         setTimeout(() => setIsClickable(true), 1000);
 
         // 20% 확률로 다른 도메인으로 리다이렉트
-        if (Math.random() < 0.2) {
-          const randomDomain =
-            redirectDomains[Math.floor(Math.random() * redirectDomains.length)];
-          window.open(randomDomain, '_blank');
-        }
+        // if (Math.random() < 0.2) {
+        //   const randomDomain =
+        //     redirectDomains[Math.floor(Math.random() * redirectDomains.length)];
+        //   window.open(randomDomain, '_blank');
+        // }
       } else if (state === 'go') {
         setEndTime(Date.now());
         setState('done');
@@ -277,7 +277,7 @@ const ReactionTest = forwardRef<ReactionTestRef, ReactionTestProps>(
                           transition={{ delay: 0.9 }}
                           className="text-yellow-500"
                         >
-                          서버에 연결되지 않아 전체 최고 기록을 확인할 수
+                          현재 서버에 연결되지 않아 전체 최고 기록을 확인할 수
                           없습니다.
                         </motion.p>
                       )}

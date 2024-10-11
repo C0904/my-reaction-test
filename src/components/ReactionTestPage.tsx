@@ -12,6 +12,7 @@ import {
 import ReactionTest from './ReactionTest';
 import Logo from './Logo';
 import { io, Socket } from 'socket.io-client';
+import Footer from './Footer';
 
 export default function ReactionTestPage() {
   const [showTest, setShowTest] = useState<boolean>(false);
@@ -22,7 +23,7 @@ export default function ReactionTestPage() {
   const [socket, setSocket] = useState<Socket | null>(null);
 
   const connectSocket = useCallback(() => {
-    const newSocket = io('http://localhost:3001', {
+    const newSocket = io(process.env.NEXT_PUBLIC_SERVER_DOMAIN, {
       path: '/ws',
       transports: ['websocket'],
       upgrade: false,
@@ -92,28 +93,33 @@ export default function ReactionTestPage() {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <Card className="w-[350px] mx-auto">
-        <CardHeader className="flex flex-row items-center space-x-4">
-          <Logo className="w-12 h-12 flex-shrink-0" />
-          <div>
-            <CardTitle className="text-2xl">반응 속도 테스트</CardTitle>
-            <CardDescription>당신의 반응 속도를 측정해보세요!</CardDescription>
-          </div>
-        </CardHeader>
-        <CardFooter className="flex justify-center">
-          <Button onClick={handleStart}>시작</Button>
-        </CardFooter>
-      </Card>
-      {showTest && (
-        <ReactionTest
-          ref={reactionTestRef}
-          onUpdateGlobalBest={handleUpdateGlobalBest}
-          globalBestTime={globalBestTime}
-          globalBestName={globalBestName}
-          isConnected={isConnected}
-        />
-      )}
+    <div className="flex flex-col min-h-screen">
+      <main className="flex-grow container mx-auto p-4">
+        <Card className="w-[350px] mx-auto">
+          <CardHeader className="flex flex-row items-center space-x-4">
+            <Logo className="w-12 h-12 flex-shrink-0" />
+            <div>
+              <CardTitle className="text-2xl">반응 속도 테스트</CardTitle>
+              <CardDescription>
+                당신의 반응 속도를 측정해보세요!
+              </CardDescription>
+            </div>
+          </CardHeader>
+          <CardFooter className="flex justify-center">
+            <Button onClick={handleStart}>시작</Button>
+          </CardFooter>
+        </Card>
+        {showTest && (
+          <ReactionTest
+            ref={reactionTestRef}
+            onUpdateGlobalBest={handleUpdateGlobalBest}
+            globalBestTime={globalBestTime}
+            globalBestName={globalBestName}
+            isConnected={isConnected}
+          />
+        )}
+      </main>
+      <Footer />
     </div>
   );
 }
