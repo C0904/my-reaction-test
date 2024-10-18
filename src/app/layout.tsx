@@ -4,6 +4,8 @@ import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://speedyreact.com';
+
 export const metadata: Metadata = {
   title: {
     default: '반응 속도 테스트',
@@ -14,11 +16,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: '반응 속도 테스트',
     description: '당신의 반응 속도를 측정하고 다른 사람들과 비교해보세요.',
-    url: 'https://speedyreact.com',
+    url: BASE_URL,
     siteName: '반응 속도 테스트',
     images: [
       {
-        url: 'https://speedyreact.com/public/logo.jpg',
+        url: `${BASE_URL}/logo.jpg`,
         width: 800,
         height: 400,
       },
@@ -30,18 +32,18 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: '반응 속도 테스트',
     description: '당신의 반응 속도를 측정하고 다른 사람들과 비교해보세요.',
-    images: ['https://speedyreact.com/public/logo.jpg'],
+    images: [`${BASE_URL}/logo.jpg`],
   },
   other: {
-    'kaist:a': 'dummy',
-    'kaist:date': new Date().toISOString(),
+    'kakaostory:a': 'dummy',
+    'kakaostory:date': new Date().toISOString(),
   },
   icons: {
     icon: [
-      { url: '/public/logo.svg', type: 'image/svg+xml' },
-      { url: '/public/favicon.ico', sizes: 'any' },
+      { url: '/logo.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: 'any' },
     ],
-    apple: [{ url: '/public/logo.jpg', sizes: '180x180', type: 'image/jpeg' }],
+    apple: [{ url: '/logo.jpg', sizes: '180x180', type: 'image/jpeg' }],
   },
 };
 
@@ -53,7 +55,9 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
-        <link rel="icon" href="/public/logo.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/logo.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/logo.jpg" sizes="180x180" />
       </head>
       <body className={inter.className}>{children}</body>
     </html>
