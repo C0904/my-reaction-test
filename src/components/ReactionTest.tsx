@@ -197,7 +197,10 @@ const ReactionTest = forwardRef<ReactionTestRef, ReactionTestProps>(
           <div>
             <CardTitle className="text-2xl">반응 속도 테스트</CardTitle>
             <CardDescription>
-              화면이 초록색으로 변하면 클릭하세요!
+              <span>
+                <span className="text-green-500">초록색</span>으로 변하면
+                클릭하세요!
+              </span>
             </CardDescription>
           </div>
         </CardHeader>
@@ -251,7 +254,10 @@ const ReactionTest = forwardRef<ReactionTestRef, ReactionTestProps>(
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.5 }}
                       >
-                        당신의 반응 속도는 {getAgeRange(reactionTime)}{' '}
+                        당신의 반응 속도는{' '}
+                        <span className="text-red-500 font-semibold">
+                          {getAgeRange(reactionTime)}
+                        </span>{' '}
                         수준입니다!
                       </motion.p>
                       <motion.p
@@ -263,6 +269,7 @@ const ReactionTest = forwardRef<ReactionTestRef, ReactionTestProps>(
                       </motion.p>
                       {isConnected && globalBestTime && globalBestName && (
                         <motion.p
+                          className="font-bold"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           transition={{ delay: 0.9 }}
