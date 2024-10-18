@@ -120,6 +120,23 @@ export default function ReactionTestPage() {
         )}
       </main>
       <Footer />
+      <script type="application/ld+json">
+        {JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'WebApplication',
+          name: '반응 속도 테스트',
+          description:
+            '온라인에서 간편하게 반응 속도를 측정하고 다른 사람들과 비교해보세요.',
+          url: 'https://speedyreact.com',
+          applicationCategory: 'GameApplication',
+          operatingSystem: 'Any',
+          offers: {
+            '@type': 'Offer',
+            price: '0',
+            priceCurrency: 'KRW',
+          },
+        })}
+      </script>
     </div>
   );
 }
