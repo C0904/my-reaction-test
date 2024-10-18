@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     siteName: '반응 속도 테스트',
     images: [
       {
-        url: 'https://speedyreact.com/og-image.jpg',
+        url: 'https://speedyreact.com/public/logo.jpg',
         width: 800,
         height: 400,
       },
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: '반응 속도 테스트',
     description: '당신의 반응 속도를 측정하고 다른 사람들과 비교해보세요.',
-    images: ['https://speedyreact.com/twitter-image.jpg'],
+    images: ['https://speedyreact.com/public/logo.jpg'],
   },
   other: {
     'kaist:a': 'dummy',
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
       { url: '/public/logo.svg', type: 'image/svg+xml' },
       { url: '/public/favicon.ico', sizes: 'any' },
     ],
-    apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
+    apple: [{ url: '/public/logo.jpg', sizes: '180x180', type: 'image/jpeg' }],
   },
 };
 
@@ -53,7 +53,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
-        <link rel="icon" href="/logo.svg" type="image/svg+xml" />
+        <link rel="icon" href="/public/logo.svg" type="image/svg+xml" />
       </head>
       <body className={inter.className}>{children}</body>
     </html>
